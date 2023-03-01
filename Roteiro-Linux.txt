@@ -1,4 +1,6 @@
-ROTEIRO
+PROJETO DIO - Trata-se de um arquivo de texto em formato de roteiro que descreve a elaboração de um script. 
+O script tem por finalidade realizar a criação de diretórios, grupos, usuários que são adicionados aos grupos e por fim, especificar permissões.
+Cada passo é realizado ao iniciar a máquina, de forma que, as tarefas citadas não mais necessitem ser feitas manualmente.
 
 //Iniciar com a exclusão dos diretórios já feitos (visando o funcionamento por meio exclusivo do código escrito)
 
@@ -58,6 +60,3 @@ echo "Finalizando"
 
 //Executar o script
 - ./iacl.sh
-
-
-
