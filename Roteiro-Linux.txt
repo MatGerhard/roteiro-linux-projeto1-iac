@@ -1,0 +1,63 @@
+ROTEIRO
+
+//Iniciar com a exclusão dos diretórios já feitos (visando o funcionamento por meio exclusivo do código escrito)
+
+- Ir até a raiz: cd /
+- Listar os arquivos: ls -l
+- Localizar os diretórios e fazer a exclusão: rm -Rf /nome_do_diretorio/
+//O comando "rm - Rf /nome_do_diretorio/" exclui de forma forçada e recursiva todos os arquivos do diretório
+
+//Excluir também os usuários da máquina
+
+- Checar quais são os usuários: cat /etc/passwd
+- Excluir o usuário, seus diretórios e e-mail: userdel -r nome_do_usuario
+
+//Excluir os grupos criados na máquina
+
+- Checar quais são os grupos: cat /etc/group
+- Excluir os grupos: groupdel nome_do_grupo
+
+//Feitas as exclusões, é possível iniciar a formulação do roteiro ou script
+
+- Ir ao diretório de script (criar um caso não exista): cd/script/
+- Utilizar o Nano: nano iacl.sh
+- Criar um bash: #!/bin/bash
+- Criar echo: echo "Criando diretórios"
+//Utilizar echo ajuda a informar sobre o processo que está sendo realizado (informa o que acontece no comando seguinte)
+- Criar diretório: mkdir /dir1
+- Criar diretório: mkdir /dir2
+- Criar diretório: mkdir /dir3
+- Criar diretório: mkdir /dir4
+
+- Criar echo: echo "Criando grupos"
+- Criar grupo: groupadd GRP_1
+- Criar grupo: groupadd GRP_2
+- Criar grupo: groupadd GRP_3
+
+- Criar echo: echo "Criando usuários e adicionando aos grupos"
+- Criar usuários: useradd nome_do_usuário1 -m -s /bin/bash -p $(openssl passwd - crypt senha) - G GRP_1
+- Criar usuários: useradd nome_do_usuário2 -m -s /bin/bash -p $(openssl passwd - crypt senha) - G GRP_2
+- Criar usuários: useradd nome_do_usuário3 -m -s /bin/bash -p $(openssl passwd - crypt senha) - G GRP_3
+- Criar usuários: useradd nome_do_usuárion -m -s /bin/bash -p $(openssl passwd - crypt senha) - G GRP_4
+
+- Criar echo: echo "Especificando permissões dos diretórios"
+
+chown root: GRP_1 /dir1
+chown root: GRP_2 /dir2
+chown root: GRP_3 /dir3
+
+chmod 770 /dir1
+chmod 770 /dir2
+chmod 770 /dir3
+chmod 777 /dir4
+
+echo "Finalizando"
+
+//Finalizado o script, salvar o aqruivo com CTRL + O, em seguida, gerar a permissão para que ele execute
+- Gerando permissão de execução: chmod + x iacl.sh
+
+//Executar o script
+- ./iacl.sh
+
+
+
